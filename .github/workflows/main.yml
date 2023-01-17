@@ -19,11 +19,11 @@ jobs:
 
     steps:
       - name: Do deploy
-        run: echo "hello from $NAME"
+        run: echo "hello from ${{ vars.NAME }}"
         shell: bash
 
       - name: Use var
-        run: echo "Use default $SOME_VAR"
+        run: echo "Use default var $SOME_VAR"
         shell: bash
 
   deploy-staging:
@@ -38,9 +38,9 @@ jobs:
 
     steps:
       - name: Do deploy
-        run: echo "hello from $NAME"
+        run: echo "hello from ${{ vars.NAME }}"
         shell: bash
 
       - name: Use var
-        run: echo "Use override $SOME_VAR"
+        run: echo "Use override var $SOME_VAR"
         shell: bash
