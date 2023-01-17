@@ -1,0 +1,46 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
+
+env:
+  SOME_VAR: global
+
+jobs:
+  deploy-dev:
+    name: Deploy dev
+    runs-on: ubuntu-latest
+
+    environment:
+      name: dev
+
+    steps:
+      - name: Do deploy
+        run: echo "hello from $NAME"
+        shell: bash
+
+      - name: Use var
+        run: echo "Use default $SOME_VAR"
+        shell: bash
+
+  deploy-staging:
+    name: Deploy staging
+    runs-on: ubuntu-latest
+
+    environment:
+      name: staging
+
+    env:
+      SOME_VAR: only in staging
+
+    steps:
+      - name: Do deploy
+        run: echo "hello from $NAME"
+        shell: bash
+
+      - name: Use var
+        run: echo "Use override $SOME_VAR"
+        shell: bash
